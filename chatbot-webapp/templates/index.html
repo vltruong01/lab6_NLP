@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chatbot</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        #chat-container {
+            width: 400px;
+            background-color: white;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+        }
+        #messages {
+            height: 300px;
+            overflow-y: scroll;
+            margin-bottom: 20px;
+            border: 1px solid #ddd;
+            padding: 10px;
+            border-radius: 5px;
+        }
+        .message {
+            margin-bottom: 10px;
+        }
+        .message.user {
+            text-align: right;
+        }
+        .message.bot {
+            text-align: left;
+        }
+        #input-box {
+            display: flex;
+        }
+        #input-box input {
+            flex: 1;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px 0 0 5px;
+        }
+        #input-box button {
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-left: 0;
+            background-color: #007BFF;
+            color: white;
+            border-radius: 0 5px 5px 0;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div id="chat-container">
+        <h1>Truong Vuong's Chatbot</h1>
+        <div id="messages"></div>
+        <div id="input-box">
+            <input type="text" id="user-input" placeholder="Type your message...">
+            <button onclick="sendMessage()">Send</button>
+        </div>
+    </div>
+    <script>
+        function addMessage(content, isUser) {
+            const messagesDiv = document.getElementById('messages');
+            const messageDiv = document.createElement('div');
+            messageDiv.classList.add('message');
+            messageDiv.classList.add(isUser ? 'user' : 'bot');
+            messageDiv.innerText = content;
+            messagesDiv.appendChild(messageDiv);
+            messagesDiv.scrollTop = messagesDiv.scrollHeight;
+        }
+
+        async function sendMessage() {
+            const userInput = document.getElementById('user-input');
+            const message = userInput.value;
+            if (!message) return;
+
+            addMessage(message, true);
+            userInput.value = '';
+
+            const response = await fetch('/chat', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ question: message })
+            });
+            const data = await response.json();
+            addMessage(data.response.answer, false);
+        }
+    </script>
+</body>
+</html>

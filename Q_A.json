@@ -1,0 +1,42 @@
+[
+    {
+        "question": "How old are you?",
+        "answer": "23"
+    },
+    {
+        "question": "What is your highest level of education?",
+        "answer": "teaching assistant"
+    },
+    {
+        "question": "What major or field of study did you pursue during your education?",
+        "answer": "Data Science and AI"
+    },
+    {
+        "question": "How many years of work experience do you have?",
+        "answer": "no formal work experience"
+    },
+    {
+        "question": "What type of work or industry have you been involved in?",
+        "answer": "teaching assistant"
+    },
+    {
+        "question": "Can you describe your current role or job responsibilities?",
+        "answer": "teaching assistant"
+    },
+    {
+        "question": "What are your core beliefs regarding the role of technology in shaping society?",
+        "answer": "It holds immense potential to enhance the quality of life."
+    },
+    {
+        "question": "How do you think cultural values should influence technological advancements?",
+        "answer": "In a manner that respects and preserves diverse cultural identities and traditions."
+    },
+    {
+        "question": "As a master’s student, what is the most challenging aspect of your studies so far?",
+        "answer": "English communication"
+    },
+    {
+        "question": "What specific research interests or academic goals do you hope to achieve during your time as a master’s student?",
+        "answer": "academic goals"
+    }
+]
